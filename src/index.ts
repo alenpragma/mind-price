@@ -85,7 +85,7 @@ app.get("/price/musd", async (req: Request, res: Response) => {
 app.get("/", async (req: Request, res: Response) => {
   try {
     const registryResponse = await axios.get(
-      "https://msc-token-registry-ruddy.vercel.app"
+      "https://msc-token-registry.vercel.app/"
     );
     const tokens = registryResponse.data.data;
 
