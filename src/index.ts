@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import axios from "axios";
 import cors from "cors"; // Import cors middleware
+import { PRICE_API } from "./api";
 
 const app = express();
 const PORT = 5000;
@@ -72,6 +73,17 @@ app.get("/price/musd", async (req: Request, res: Response) => {
   }
 });
 
+app.get("/price/usdt", async (req: Request, res: Response) => {
+  try {
+    const response = await axios.get(PRICE_API);
+    const price = response.data.data.new_price;
+    const change = response.data.data.change;
+    res.json({ price, change });
+  } catch (error) {
+    console.error("Error fetching price:", error);
+    res.status(500).json({ error: "Failed to fetch price" });
+  }
+});
 // customize api response
 app.get("/", async (req: Request, res: Response) => {
   try {

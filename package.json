@@ -1,7 +1,7 @@
 {
   "name": "mind-price",
   "version": "1.0.0",
-  "main": "src/server.ts",
+  "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
